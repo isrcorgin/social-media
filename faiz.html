@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Dark Theme</title>
 
   <!-- Font Awesome -->
   <link
@@ -13,33 +14,64 @@
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #667eea, #764ba2);
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
     }
 
     .profile-card {
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      padding: 35px 40px;
-      border-radius: 18px;
+      backdrop-filter: blur(14px);
+      padding: 40px 30px;
+      border-radius: 24px;
       text-align: center;
-      width: 320px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      animation: fadeIn 0.8s ease-in-out;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      animation: fadeInUp 0.8s ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes fadeIn {
+    /* Decorative circles */
+    .profile-card::before,
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .profile-card::before {
+      width: 200px;
+      height: 200px;
+      background: #fff;
+      top: -100px;
+      right: -100px;
+    }
+
+    .profile-card::after {
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      bottom: -75px;
+      left: -75px;
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -47,88 +79,378 @@
       }
     }
 
+    /* Profile Image with Status */
+    .profile-image-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
     .profile-card img {
       width: 130px;
       height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #fff;
-      margin-bottom: 15px;
+      border: 5px solid #fff;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-card img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .status-indicator {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background: #00ff88;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      animation: pulse 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+      }
     }
 
     .profile-card h2 {
-      margin: 10px 0 5px;
+      margin: 15px 0 8px;
       color: #fff;
-      font-size: 22px;
+      font-size: 26px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
-    .profile-card p {
+    .profile-card .role {
       color: #e0e0e0;
-      font-size: 14px;
-      margin-bottom: 20px;
+      font-size: 15px;
+      margin-bottom: 25px;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 25px 0;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #e0e0e0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    /* Skills Section */
+    .skills {
+      margin: 25px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills h3 {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      cursor: default;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+      position: relative;
+      z-index: 1;
     }
 
     .social-buttons a {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: #fff;
-      padding: 12px;
-      border-radius: 10px;
+      padding: 14px;
+      border-radius: 12px;
       margin: 12px 0;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 600;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-buttons a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.3s ease;
+    }
+
+    .social-buttons a:hover::before {
+      left: 100%;
     }
 
     .social-buttons a i {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     .linkedin {
       background: linear-gradient(135deg, #0077b5, #00a0dc);
     }
 
-    .instagram {
-      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    .github {
+      background: linear-gradient(135deg, #24292e, #444);
     }
 
     .portfolio {
       background: linear-gradient(135deg, #232526, #414345);
     }
 
+    .certificate {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: #000;
+    }
+
     .social-buttons a:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    }
+
+    /* Download Button */
+    .download-cv {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .download-cv::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.3s ease;
+    }
+
+    .download-cv:hover::before {
+      left: 100%;
+    }
+
+    .download-cv:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .profile-card {
+        padding: 30px 20px;
+      }
+
+      .profile-card h2 {
+        font-size: 22px;
+      }
+
+      .stat-number {
+        font-size: 20px;
+      }
+
+      .social-buttons a {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+
+    /* Loading Animation for Stats */
+    .stat-number {
+      animation: countUp 1s ease-out;
+    }
+
+    @keyframes countUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="profile-card">
-    <!-- Profile Photo -->
-    <img src="profile.jpg" alt="Profile Photo">
+    <!-- Decorative Background Elements (handled by CSS) -->
 
-    <!-- Name -->
-    <h2>Your Name</h2>
-    
-
-    <!-- Buttons -->
-    <div class="social-buttons">
-      <a href="https://www.linkedin.com" target="_blank" class="linkedin">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-
-      <a href="https://www.instagram.com" target="_blank" class="instagram">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-
-      <a href="#" class="portfolio">
-        <i class="fas fa-globe"></i> Portfolio
-      </a>
+    <!-- Profile Image with Status -->
+    <div class="profile-image-wrapper">
+      <img src="https://via.placeholder.com/130" alt="Profile Photo">
+      <div class="status-indicator" title="Available"></div>
     </div>
+
+    <!-- Name & Role -->
+    <h2>Your Name</h2>
+    <p class="role">Full Stack Developer | UI/UX Enthusiast</p>
+
+    <!-- Stats Section -->
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Years Exp</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Clients</span>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="skills">
+      <h3>Skills & Technologies</h3>
+      <div class="skills-container">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">UI/UX</span>
+        <span class="skill-tag">Git</span>
+      </div>
+    </div>
+
+    <!-- Social Buttons -->
+    <div class="social-buttons">
+
+      <a href="https://www.linkedin.com/in/yourid" target="_blank" class="linkedin">
+        <i class="fab fa-linkedin"></i> LinkedIn Profile
+      </a>
+
+      <a href="https://github.com/yourid" target="_blank" class="github">
+        <i class="fab fa-github"></i> GitHub Repos
+      </a>
+
+      <a href="https://yourportfolio.com" target="_blank" class="portfolio">
+        <i class="fas fa-globe"></i> My Portfolio
+      </a>
+
+      <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" 
+         target="_blank" 
+         class="certificate">
+        <i class="fas fa-certificate"></i> View Certifications
+      </a>
+
+    </div>
+
+   
+
   </div>
+
+  <script>
+    // Animate stats on load
+    function animateValue(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = value + (element.dataset.suffix || '');
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const statNumbers = document.querySelectorAll('.stat-number');
+      statNumbers.forEach(stat => {
+        const text = stat.textContent;
+        const number = parseInt(text);
+        const suffix = text.replace(number, '');
+        stat.dataset.suffix = suffix;
+        animateValue(stat, 0, number, 1500);
+      });
+    });
+  </script>
 
 </body>
 </html>
