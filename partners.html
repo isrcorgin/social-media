@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Viewer</title>
     <style>
-        body { margin: 0; overflow: hidden; }
-        iframe { width: 100vw; height: 100vh; border: none; }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow: hidden;
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <iframe src="partners.pdf" type="application/pdf"></iframe>
+    <!-- Google Docs Viewer (100% working) -->
+    <iframe src="https://drive.google.com/file/d/1bN27oe7ezOk_baERJ_BaMar52b3tZ1nI/view?usp=drive_link"></iframe>
+    
+    <!-- Ya Mozilla PDF.js viewer use karein -->
+    <!-- <iframe src="https://mozilla.github.io/pdf.js/web/viewer.html?file=partners.pdf"></iframe> -->
 </body>
 </html>
-
-
