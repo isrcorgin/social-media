@@ -142,53 +142,17 @@
       z-index: 1;
     }
 
-    /* Stats Section */
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 25px 0;
-      padding: 20px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      z-index: 1;
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: #e0e0e0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 5px;
-    }
-
     /* Skills Section */
     .skills {
       margin: 25px 0;
       position: relative;
       z-index: 1;
-      display : flex ;
-      align-items : center ;
-      justify-center : center ;
-      flex-direction : column ; 
     }
 
     .skills h3 {
       color: #fff;
       font-size: 16px;
       margin-bottom: 15px;
-      text-align: left;
       font-weight: 600;
     }
 
@@ -220,6 +184,7 @@
     .social-buttons {
       position: relative;
       z-index: 1;
+      margin-top: 25px;
     }
 
     .social-buttons a {
@@ -280,45 +245,6 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.3);
     }
 
-    /* Download Button */
-    .download-cv {
-      margin-top: 20px;
-      background: linear-gradient(135deg, #11998e, #38ef7d);
-      color: white;
-      padding: 14px;
-      border-radius: 12px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-    }
-
-    .download-cv::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left 0.3s ease;
-    }
-
-    .download-cv:hover::before {
-      left: 100%;
-    }
-
-    .download-cv:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
-    }
-
     /* Responsive */
     @media (max-width: 480px) {
       .profile-card {
@@ -329,29 +255,9 @@
         font-size: 22px;
       }
 
-      .stat-number {
-        font-size: 20px;
-      }
-
       .social-buttons a {
         font-size: 14px;
         padding: 12px;
-      }
-    }
-
-    /* Loading Animation for Stats */
-    .stat-number {
-      animation: countUp 1s ease-out;
-    }
-
-    @keyframes countUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
   </style>
@@ -359,21 +265,15 @@
 <body>
 
   <div class="profile-card">
-    <!-- Decorative Background Elements (handled by CSS) -->
-
     <!-- Profile Image with Status -->
     <div class="profile-image-wrapper">
-      <img src="/nit-i/vishesh.jpeglable"></div>
+      <img src="/nit-i/vishesh.jpeg" alt="Vishesh Shivlal Jaiswar">
+      <div class="status-indicator"></div>
     </div>
 
     <!-- Name & Role -->
-    <h2>Vishesh Shivlal jaiswar</h2>
+    <h2>Vishesh Shivlal Jaiswar</h2>
     <p class="role">Full Stack Developer | UI/UX Enthusiast</p>
-
-    <!-- Stats Section -->
-    <div >
-      
-    </div>
 
     <!-- Skills Section -->
     <div class="skills">
@@ -391,7 +291,6 @@
 
     <!-- Social Buttons -->
     <div class="social-buttons">
-
       <a href="https://www.linkedin.com/in/vishesh-jaiswar-5a0b94394/" target="_blank" class="linkedin">
         <i class="fab fa-linkedin"></i> LinkedIn Profile
       </a>
@@ -409,40 +308,9 @@
          class="certificate">
         <i class="fas fa-certificate"></i> View Certifications
       </a>
-
     </div>
 
-   
-
   </div>
-
-  <script>
-    // Animate stats on load
-    function animateValue(element, start, end, duration) {
-      let startTimestamp = null;
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const value = Math.floor(progress * (end - start) + start);
-        element.textContent = value + (element.dataset.suffix || '');
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      window.requestAnimationFrame(step);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const statNumbers = document.querySelectorAll('.stat-number');
-      statNumbers.forEach(stat => {
-        const text = stat.textContent;
-        const number = parseInt(text);
-        const suffix = text.replace(number, '');
-        stat.dataset.suffix = suffix;
-        animateValue(stat, 0, number, 1500);
-      });
-    });
-  </script>
 
 </body>
 </html>
