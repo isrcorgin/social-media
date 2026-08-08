@@ -75,95 +75,139 @@
           opacity: 0;
         }
       }
+
+      /* ===== Uniform card system ===== */
+      .brand-card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Fixed-size logo frame: every logo sits in the exact same box,
+         centered, never stretched or cropped */
+      .logo-frame {
+        height: 250px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+      }
+
+      .logo-frame img {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* Fixed-height tagline area so every card's text block is identical,
+         regardless of how long the tagline is */
+      .brand-tagline {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.75rem;
+      }
+
+      /* Uniform button: same height/padding on every card */
+      .brand-btn {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     </style>
   </head>
 
   <body class="bg-blue-50 font-sans text-gray-700">
     <!-- Company Name Section -->
     <header class="text-center py-12 flex flex-col items-center">
-      <img src="/1.png" alt="Alliance Group of Companies" class="h-42 mb-4" />
-      <!-- <h1 class="company-name hover:cursor-pointer">
-        <span style="color: #1775bb">Alliance Group</span>
-        <span style="color: #3b82f6">Of Company</span>
-      </h1> -->
+      <div class="flex items-center justify-center gap-6 mb-4">
+        <img src="/1.png" alt="Alliance Group logo" class="h-42 object-contain" />
+        <!-- <img src="/2.png" alt="Alliance Group emblem" class="h-42 object-contain" /> -->
+      </div>
+      <!-- <a href="index.html" class="company-name hover:cursor-pointer no-underline">
+        Alliance Group of Company
+      </a> -->
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 lg:px-16 flex flex-col items-center space-y-8">
+    <main class="container mx-auto px-6 lg:px-16 flex flex-col items-center space-y-8 pb-16">
       <!-- Buttons Section for New Brands -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
         <!-- Student Alliance -->
-        <a href="studentAlliance.html" class="hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container block">
-          <img
-            src="images/studentAlliance.png"
-            alt="student Alliance"
-            class="w-3/4 mx-auto mb-2 rounded-lg"
-          />
-          <p class="text-sm text-gray-600 mb-4 h-10 font-medium">IFPD Digital Panels & STEM Labs — Powering the Future of Education</p>
-          <span
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition"
-            >Student Alliance</span
-          >
+        <a href="studentAlliance.html" class="brand-card hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container">
+          <div class="logo-frame">
+            <img src="images/SA-LOGO.jpg" alt="Student Alliance" />
+          </div>
+          <p class="brand-tagline text-sm text-gray-600 mb-4 font-medium flex items-center justify-center">
+            IFPD Digital Panels &amp; STEM Labs — Powering the Future of Education
+          </p>
+          <span class="brand-btn w-full bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition mt-auto">
+            Student Alliance
+          </span>
           <div class="sparkling-effect"></div>
         </a>
 
         <!-- Nexcore Alliance -->
-        <a href="nexcoreAlliance.html" class="hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container block">
-          <img
-            src="images/nexcoreAlliance.png"
-            alt="Nexcore Alliance"
-            class="w-3/4 mx-auto mb-2 rounded-lg"
-          />
-          <p class="text-sm text-gray-600 mb-4 h-10 font-medium">Powering Businesses with AI, Software & Digital Innovation.</p>
-          <span
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition"
-            >Nexcore Alliance</span
-          >
+        <a href="nexcoreAlliance.html" class="brand-card hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container">
+          <div class="logo-frame">
+            <img src="images/NEX-LOG.jpg" alt="Nexcore Alliance" />
+          </div>
+          <p class="brand-tagline text-sm text-gray-600 mb-4 font-medium flex items-center justify-center">
+            Powering Businesses with AI, Software &amp; Digital Innovation.
+          </p>
+          <span class="brand-btn w-full bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition mt-auto">
+            Nexcore Alliance
+          </span>
           <div class="sparkling-effect"></div>
         </a>
 
         <!-- Marketiq Card -->
-        <a href="marketiq.html" class="hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container block flex flex-col justify-between">
-          <img
-            src="images/marketiq.jpg"
-            alt="Marketiq"
-            class="w-3/4 mx-auto mb-2 mt-4 rounded-lg"
-          />
-          <p class="text-sm text-gray-600 mb-4 h-10 font-medium">We Build Visibility. Generate Leads. Drive Growth.</p>
-          <span
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition w-full"
-            >Marketiq Junction</span
-          >
+        <a href="marketiq.html" class="brand-card hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container">
+          <div class="logo-frame">
+            <img src="images/MJ-LOG.jpg" alt="Marketiq" />
+          </div>
+          <p class="brand-tagline text-sm text-gray-600 mb-4 font-medium flex items-center justify-center">
+            We Build Visibility. Generate Leads. Drive Growth.
+          </p>
+          <span class="brand-btn w-full bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition mt-auto">
+            Marketiq Junction
+          </span>
           <div class="sparkling-effect"></div>
         </a>
 
         <!-- Edu Momentum LLP Card -->
-        <a href="edumomentum.html" class="hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container block">
-          <img
-            src="images/edumomentum.png"
-            alt="Edu Momentum LLP"
-            class="w-3/4 mx-auto mb-2 rounded-lg"
-          />
-          <p class="text-sm text-gray-600 mb-4 h-10 font-medium">Driving Educational Excellence</p>
-          <span
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition"
-            >Edu Momentum LLP</span
-          >
+        <a href="edumomentum.html" class="brand-card hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container">
+          <div class="logo-frame">
+            <img src="images/EDU-LOGO.jpg" alt="Edu Momentum LLP" />
+          </div>
+          <p class="brand-tagline text-sm text-gray-600 mb-4 font-medium flex items-center justify-center">
+            Driving Educational Excellence
+          </p>
+          <span class="brand-btn w-full bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition mt-auto">
+            Edu Momentum LLP
+          </span>
           <div class="sparkling-effect"></div>
         </a>
 
         <!-- Nexcore Institute of technology-->
-        <a href="nexcoreInstitute.html" class="hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container block">
-          <img
-            src="images/nexcoreInstitute.png"
-            alt="Nexcore Institude of technology"
-            class="w-3/4 mx-auto mb-2 rounded-lg"
-          />
-          <p class="text-sm text-gray-600 mb-4 h-10 font-medium">Shaping the Next Generation of Innovators</p>
-          <span
-            class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition"
-            >Nexcore Institute of Technology</span
-          >
+        <a href="nexcoreInstitute.html" class="brand-card hover-card rounded-lg shadow-lg p-6 text-center bg-white sparkling-container">
+          <div class="logo-frame">
+            <img src="images/nexcoreInstitute.png" alt="Nexcore Institute of Technology" />
+          </div>
+          <p class="brand-tagline text-sm text-gray-600 mb-4 font-medium flex items-center justify-center">
+            Shaping the Next Generation of Innovators
+          </p>
+          <span class="brand-btn w-full bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition mt-auto">
+            Nexcore Institute of Technology
+          </span>
           <div class="sparkling-effect"></div>
         </a>
       </div>
