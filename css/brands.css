@@ -1029,7 +1029,7 @@ button:hover,
 /* WhatsApp */
 .button.button-whatsapp {
   color: #ffffff;
-  background-color: #455a64;
+  background-color: #25D366;
 }
 .button.button-whatsapp:hover,
 .button.button-whatsapp:focus {
@@ -1075,5 +1075,33 @@ button:hover,
 }
 .button.button-zoom:hover,
 .button.button-zoom:focus {
+  filter: brightness(90%);
+}
+
+/* Custom Brands */
+.button.button-email {
+  color: #ffffff;
+  background-color: #EA4335;
+}
+.button.button-email:hover,
+.button.button-email:focus {
+  filter: brightness(90%);
+}
+
+.button.button-phone {
+  color: #ffffff;
+  background-color: #34A853;
+}
+.button.button-phone:hover,
+.button.button-phone:focus {
+  filter: brightness(90%);
+}
+
+.button.button-map {
+  color: #ffffff;
+  background-color: #4285F4;
+}
+.button.button-map:hover,
+.button.button-map:focus {
   filter: brightness(90%);
 }
